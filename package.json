@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-mailer": "^0.1.1",
+    "nodemon": "^2.0.20"
+  },
+  "name": "portfolio-website-with-full-backend",
+  "version": "1.0.0",
+  "description": "Protfolio website of Haseeb Alma",
+  "start": "src/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haseeb Alam",
+  "license": "MIT"
+}
