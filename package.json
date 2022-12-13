@@ -1,17 +1,23 @@
 {
-  "dependencies": {
-    "express": "^4.18.2",
-    "node-mailer": "^0.1.1",
-    "nodemon": "^2.0.20"
-  },
-  "name": "portfolio-website-with-full-backend",
+  "name": "Portfolio website",
   "version": "1.0.0",
-  "description": "Protfolio website of Haseeb Alma",
-  "start": "src/index.js",
-  "devDependencies": {},
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js",
+    "main": "app.js"
   },
-  "author": "Haseeb Alam",
-  "license": "MIT"
+  "author": "Haseeb Mushtaq",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-fileupload": "^0.1.1",
+    "hbs": "^4.2.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20"
+  }
 }
