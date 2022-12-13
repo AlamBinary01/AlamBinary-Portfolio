@@ -6,5 +6,4 @@ const publicPath = path.join(__dirname, "../public");
 router.use(express.static(publicPath));
 
 router.route("").get(controller.HomePage);
-
-module.exports = router;
+module.exports=router;

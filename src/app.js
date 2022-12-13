@@ -1,15 +1,14 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-// const router=require("./routers/portfolio");
-const port = process.env.port | 3002;
-const staticpath= path.join(__dirname+"../public");
-app.set("view engine","ejs");
-
-app.get("",(req,res)=>{
-    res.render("index");
-});
+const fs=require("fs");
+const axios= require("axios");
+const route = require("../routers/portfolio");
+const port = process.env.port | 3001;
+app.use("/public", express.static("public"));
+app.set("view engine", "ejs");
+app.use(route);
 app.listen(port, (err) => {
-    if (err) throw err;
-    console.log("Listening At Port http://localhost:3001.");
+  if (err) throw err;
+  console.log("Listening At Port http://localhost:3001.");
 });

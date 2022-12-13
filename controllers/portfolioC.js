@@ -1,8 +1,8 @@
-const path = require("path");
+const core=require("cors");
 module.exports = {
 
     //contact us
     HomePage:(req,res)=>{
-      res.render("index",{title:"AlamBinary01"});
+      res.render("index");
     }
 };
