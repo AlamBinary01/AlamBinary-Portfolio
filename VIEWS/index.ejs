@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/public/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://unpkg.com/kursor/dist/kursor.css">
     <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="/public/tooplate-style.css">
+    <link rel="stylesheet" href="/public/css/tooplate-style.css">
 
 </head>
 
@@ -265,21 +265,25 @@
                     <div class="contact-form">
                         <h2 class="mb-4">Interested to work together? Let's talk</h2>
 
-                        <form action="" method="get">
+                        <form action="" method="post">
                             <div class="row">
                                 <div class="col-lg-6 col-12">
                                     <input type="text" class="form-control" name="name" placeholder="Your Name"
-                                        id="name">
+                                        id="name" required>
                                 </div>
 
                                 <div class="col-lg-6 col-12">
                                     <input type="email" class="form-control" name="email" placeholder="Email"
-                                        id="email">
+                                        id="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="test"col="6"class="form-control" name="subject" placeholder="subject"
+                                        id="email" required>
                                 </div>
 
                                 <div class="col-12">
                                     <textarea name="message" rows="6" class="form-control" id="message"
-                                        placeholder="Message"></textarea>
+                                        placeholder="Message" required></textarea>
                                 </div>
 
                                 <div class="ml-lg-auto col-lg-5 col-12">
@@ -322,26 +326,6 @@
         new kursor({
             type: 1
         })
-
-        $('#hello').on('click', function () {
-            $.ajax({
-                url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/172905/test.pdf',
-                method: 'GET',
-                xhrFields: {
-                    responseType: 'blob'
-                },
-                success: function (data) {
-                    var a = document.createElement('a');
-                    var url = window.URL.createObjectURL(data);
-                    a.href = url;
-                    a.download = 'myfile.pdf';
-                    document.body.append(a);
-                    a.click();
-                    a.remove();
-                    window.URL.revokeObjectURL(url);
-                }
-            });
-        });
 
     </script>
 </body>
