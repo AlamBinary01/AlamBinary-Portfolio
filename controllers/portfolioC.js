@@ -1,45 +1,61 @@
-const nodemialer = require("nodemailer");
-module.exports = {
+const nodemailer = require("nodemailer");
 
-    //contact us
-    HomePage:(req,res)=>{
-      res.render("index");
+module.exports = {
+    // Render homepage
+    HomePage: (req, res) => {
+        res.render("index");
     },
-    contactus:(req,res)=>{
-      const transporter = nodemialer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: {
-          user: "hase271002@gmail.com",
-          pass: "eshfzdgfepgrxaio",
-        },
-      });
-    
+    // Handle contact form submission
+    contactus: (req, res) => {
+        // Create a transporter for sending emails
+        const transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false,
+            requireTLS: true,
+            auth: {
+                user: "alambinary011@gmail.com",
+                pass: "03079957468",
+            },
+        });
+
+        // Extract data from request body
         let name_ = req.body.name;
         let email_ = req.body.email;
-        let subject_= req.body.subject;
+        let subject_ = req.body.subject;
         let message_ = req.body.message;
-        var mailOption = {
-          from: email_,
-          to: "hase271002@gamil.com",
-          subject: subject_,
-          html:
-            "<h1>AlamBinary01<br>"+
-           " </h1><b>Name:</b><br>" +
-            name_ +
-            "<br><b>Email:</b><br>" +
-            email_ +
-            "<br><b>Message:</b><br> " +
-            message_ +
-            "<br><br><br>Thanks",
+
+        // Compose email options with improved HTML structure
+        let mailOptions = {
+            from: email_, // Sender's email address
+            to: "hase271002@gmail.com", // Receiver's email address
+            subject: subject_, // Email subject
+            html: `
+                <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
+                    <h2 style="color: #333;">Hello AlamBinary01 Team,</h2>
+                    <p style="color: #555;">You have received a new message from ${name_}:</p>
+                    <div style="background-color: #fff; border-radius: 5px; padding: 20px; margin-top: 20px;">
+                        <p><strong>Name:</strong> ${name_}</p>
+                        <p><strong>Email:</strong> ${email_}</p>
+                        <p><strong>Subject:</strong> ${subject_}</p>
+                        <p><strong>Message:</strong></p>
+                        <p>${message_}</p>
+                    </div>
+                    <p style="color: #555;">Please respond to ${name_} at ${email_}.</p>
+                    <p style="color: #555;">Thank you!</p>
+                </div>
+            `, // Email body with improved HTML structure
         };
-        transporter.sendMail(mailOption,function(error,info){
-          if(error) throw error;
-          else console.log("GOOD");
+
+        // Send email
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.error(error); // Log any errors
+                res.status(500).send("Failed to send email"); // Respond with an error status
+            } else {
+                console.log("Email sent successfully"); // Log success message
+                res.render("index"); // Render homepage after successful email sending
+            }
         });
-        res.render("index");
-      
-    }
+    },
 };
